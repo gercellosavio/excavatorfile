@@ -1,6 +1,6 @@
 package excavator;
-import java.awt.Toolkit;
-import java.io.File;
+
+
 import java.io.IOException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -14,15 +14,15 @@ public class Main {
 	public static void main(String[] args)  throws IOException {
 		// TODO Auto-generated method stub
 	
-		
+		System.out.println("ejecutando Excavador");
 		 ScheduledExecutorService scheduler
          = Executors.newSingleThreadScheduledExecutor();
 
 		 Runnable task = new Comparar();
  int initialDelay = 1;
- int periodicDelay = 1;
+ int periodicDelay = 10;
  scheduler.scheduleAtFixedRate(task, initialDelay, periodicDelay,
-         TimeUnit.MINUTES
+         TimeUnit.SECONDS
  );
 		
 		

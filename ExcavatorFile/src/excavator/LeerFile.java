@@ -2,7 +2,8 @@ package excavator;
 import java.io.*;
 
 public class LeerFile {
-	 public static String  muestraContenido(String archivo) throws FileNotFoundException, IOException {
+	 private static PrintWriter out;
+	public static String  muestraContenido(String archivo) throws FileNotFoundException, IOException {
 	        String cadena, cadenaaux=null;
 	        FileReader f = new FileReader(archivo);
 	        BufferedReader b = new BufferedReader(f);
@@ -24,7 +25,7 @@ public class LeerFile {
 	        if(archivo.exists()) {
 	        	            FileWriter fw = new FileWriter(archivo, true);
 		            	    bw = new BufferedWriter(fw);
-		            	    PrintWriter out = new PrintWriter(bw);
+		            	    out = new PrintWriter(bw);
 		            	    out.println(name);
 		    } else {
 	           
