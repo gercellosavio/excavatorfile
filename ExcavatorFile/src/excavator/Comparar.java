@@ -8,12 +8,12 @@ public class Comparar implements Runnable {
 		int y=0,x=0;
 		String namefile = null;
 		boolean ban = true;
-		File dir = new File("C://Users//teaextgel//Desktop//Nueva carpeta//");
+		File dir = new File("C://Users//Gercel//Desktop//Nueva carpeta//");
 		String[] ficheros = dir.list();
 		
 	      String ficherosdb = null;
 		try {
-			ficherosdb = LeerFile.muestraContenido("C://Users//teaextgel//Desktop//Nueva carpeta//db");
+			ficherosdb = LeerFile.muestraContenido("C://Users//Gercel//Desktop//Nueva carpeta//db.txt");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -19,7 +19,7 @@ public class LeerFile {
 	    }
 	public static void Printfile(String name) throws IOException{
 		
-		 File archivo = new File("C://Users//teaextgel//Desktop//Nueva carpeta//db");
+		 File archivo = new File("C://Users//Gercel//Desktop//Nueva carpeta//db.txt");
 	        BufferedWriter bw = null;
 	      
 	        if(archivo.exists()) {
