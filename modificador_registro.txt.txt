@@ -1,0 +1,1 @@
+REG ADD HKLM\Software\Microsoft\Windows\CurrentVersion\Run /v EJECUTABLE.exe /d RUTA\EJECUTABLE.exe
