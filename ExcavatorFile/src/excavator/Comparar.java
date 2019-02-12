@@ -8,16 +8,18 @@ public class Comparar implements Runnable {
 		int y=0,x=0;
 		String namefile = null;
 		boolean ban = true;
-		File dir = new File("C://Users//Gercel//Desktop//Nueva carpeta//");
-		String[] ficheros = dir.list();
-		
+		File dir = new File("C://Program Files (x86)//facturaecuador");    // url donde el sistema excava
+		String[] ficheros = dir.list();                                        // lista de archivos 
+		 System.out.println(ficheros[0]);
 	      String ficherosdb = null;
-		try {
-			ficherosdb = LeerFile.muestraContenido("C://Users//Gercel//Desktop//Nueva carpeta//db.txt");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
+			try {
+				ficherosdb = LeerFile.muestraContenido("C://Program Files (x86)//excavador//db.txt"); // lectura de archivo db.txt para tener los files ya escaneados
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+			}
+			 
 	      String[] ficherosdbarray = ficherosdb.split("-");
 	     if (ficheros == null)
 	    	  System.out.println("No hay ficheros en el directorio especificado");
@@ -31,7 +33,10 @@ public class Comparar implements Runnable {
 	    		 for ( y=0;y<ficherosdbarray.length;y++)
 	    		     {
 	    			 if(ficherosdbarray[y].equals(ficheros[x])){
-	    				 ban=false;  System.out.println("el nombre del fichero ya esta en la base de datos"+ficheros[x]); }
+	    				 ban=false;  
+	    				
+	    				 System.out.println("el nombre del fichero ya esta en la base de datos"+ficheros[x]);
+	    				 }
 	    			 
 	    		     }
 	    		 
@@ -41,13 +46,10 @@ public class Comparar implements Runnable {
 	    		 
 	    		 
 	    		 if(ban){
+	    			 
 	    			 System.out.println("no esta "+ficheros[x]);
-			 		 try {
-						LeerFile.Printfile(ficheros[x]);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+			 		 LeerFile.Printfile(ficheros[x],0);
+			 		LeerFile.Printfile("el nombre del fichero: "+ficheros[x]+" no esta en la base de datos se lanzo el proceso de incluir", 1);
 			 				
 			 			
 	    	       }

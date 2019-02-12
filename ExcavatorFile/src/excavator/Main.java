@@ -21,6 +21,10 @@ public class Main {
 		 Runnable task = new Comparar();
  int initialDelay = 1;
  int periodicDelay = 10;
+ 
+ 
+LeerFile copyF = new LeerFile();
+copyF.CopyFile();
  scheduler.scheduleAtFixedRate(task, initialDelay, periodicDelay,
          TimeUnit.SECONDS
  );
