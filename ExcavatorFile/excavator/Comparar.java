@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Comparar implements Runnable {
 	public  void run(){
-		int y=0,x=0;
+		int y=0,x=0,con=0;
 		String namefile = null;
 		boolean ban = true;
 		File dir = new File("C://Program Files (x86)//facturaecuador");    // url donde el sistema excava
@@ -48,14 +48,9 @@ public class Comparar implements Runnable {
 	    		 if(ban){
 	    			 
 	    			 System.out.println("no esta "+ficheros[x]);
-			 		 LeerFile.Printfile(ficheros[x],0);
-			 		LeerFile.Printfile("el nombre del fichero: "+ficheros[x]+" no esta en la base de datos se lanzo el proceso de incluir", 1);
-			 		try {
-						Http.estableceComunicacion("txt", LeerFile.muestraContenido("C://Program Files (x86)//facturaecuador//"+ficheros[x]));
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}		
+			 		 Hilos hilo =new Hilos(ficheros[x],con);
+			 		 hilo.start();
+			 		 con++;	
 			 			
 	    	       }
 	    		 ban = true;
