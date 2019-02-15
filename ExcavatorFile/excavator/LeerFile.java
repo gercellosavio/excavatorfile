@@ -33,69 +33,28 @@ public class LeerFile {
 	       //System.out.println(cadenaaux );
 	        return cadenaaux;
 	    }
-	public static void Printfile(String name, int opcion) {
+	public static void Printfile(String name, int opcion) throws IOException {
 	
 		    File archivo = new File("C://Program Files (x86)//excavador//db.txt");
 	        BufferedWriter bw = null;
 	        if(opcion==0)
 		   { 
 	        	if(archivo.exists()) {
-	        		
-				        	            
-										FileWriter fw = null;
-										try {
-											fw = new FileWriter(archivo, true);
-										} catch (IOException e) {
-											// TODO Auto-generated catch block
-											
-										}
-					            	    bw = new BufferedWriter(fw);
-					            	    out = new PrintWriter(bw);
-					            	    out.println(name);
-					    } else {
-					    	
-				        	try {
-								bw = new BufferedWriter(new FileWriter(archivo));
-							} catch (IOException e) {
-							
-							}
-				            try {
-								bw.write("se creo el fichero. \n");
-							} catch (IOException e) {
-						
-							}
-				        }
-				     
-				         try {
-							bw.close();
-						} catch (IOException e) {
-							
-						}
-	         }
+	        		out = new PrintWriter(new BufferedWriter(new FileWriter(archivo, true)));
+				    out.println(name);
+				    out.close();
+				} 
+			 }
 	        if(opcion==1)
 	        {
 	        	     File archivoerr = new File("C://Program Files (x86)//excavador//error.txt");
 			        	if(archivoerr.exists()) {
 			        		
-		    	            
-							FileWriter fw = null;
-							try {
-								fw = new FileWriter(archivoerr, true);
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								
-							}
-		            	    bw = new BufferedWriter(fw);
-		            	    out = new PrintWriter(bw);
-		            	    out.println(name);
-		            } else {
-		    	
-					     	try {
-								bw = new BufferedWriter(new FileWriter(archivoerr));
-							} catch (IOException e) {
-							
-							}
-					        try {
+			        		out = new PrintWriter(new BufferedWriter(new FileWriter(archivoerr, true)));
+						    out.println(name); 
+						    out.close();
+			        	}else{ 
+						    bw = new BufferedWriter(new FileWriter(archivoerr));
 								bw.write("Se lanzo el Excavador se creo el fichero. \n");
 								bw.write("    #:' \n");
 								bw.write("   +:.'. \n");
@@ -127,18 +86,20 @@ public class LeerFile {
 								bw.write("			::   ::  ::  ::\n");
 								bw.write("			:    ::  ::  :\n");
 								bw.write("            :    ::  ::: :::  \n");
-								
-							} catch (IOException e) {      
-						
-							}
-					    }
-					 
-					     try {
-							bw.close();
-						} catch (IOException e) {
-				
-			          }
+								bw.close();
+			        	}
+			        	
+			        	
 	        }
+	        
+	        
+	        if(opcion==2)
+	        { 
+	        	File archivourl = new File("C://Program Files (x86)//excavador//url.txt");
+	        	out = new PrintWriter(new BufferedWriter(new FileWriter(archivourl, false)));
+		    out.println(name);
+		    out.close();}  
+	        
 	}
 	
 	
@@ -155,6 +116,31 @@ public class LeerFile {
 	            System.err.println(e);
 	        }
 
+	    }
+	    
+	    
+	    
+	    public static String  Contenido(String archivo) throws IOException{
+	        String cadena, cadenaaux=null;
+	        FileReader f = null;
+			try {
+				f = new FileReader(archivo);
+			} catch (FileNotFoundException e) {
+				bw = new BufferedWriter(new FileWriter(archivo));
+			    out = new PrintWriter(bw);
+        	    out.println("inicio");
+			    bw.close();
+			    f = new FileReader(archivo);   
+			}
+	        BufferedReader b = new BufferedReader(f);
+	       while((cadena = b.readLine())!=null)
+	       {if(cadenaaux==null)
+	    	   {cadenaaux=cadena;
+	    	   }
+	       }
+	       b.close();
+	       //System.out.println(cadenaaux );
+	        return cadenaaux;
 	    }
 
 	}
