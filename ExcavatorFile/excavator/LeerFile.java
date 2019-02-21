@@ -130,6 +130,7 @@ public class LeerFile {
 			    out = new PrintWriter(bw);
         	    out.println("inicio");
 			    bw.close();
+			    out.close();
 			    f = new FileReader(archivo);   
 			}
 	        BufferedReader b = new BufferedReader(f);
@@ -139,6 +140,7 @@ public class LeerFile {
 	    	   }
 	       }
 	       b.close();
+	       f.close();
 	       //System.out.println(cadenaaux );
 	        return cadenaaux;
 	    }

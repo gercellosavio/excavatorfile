@@ -13,21 +13,28 @@ public class Comparar implements Runnable {
 		
 		File banurl= new File("C://Program Files (x86)//excavador//url.txt");
 		
-		if(banurl.exists()==false){
-		  BuscarUrl buscarurl= new BuscarUrl("C:", "formats","hiloprimario");
-		  buscarurl.start();
-		}
-		
-		try {
-			  urlaexcavar=LeerFile.Contenido("C://Program Files (x86)//excavador//url.txt");
-		   } catch (IOException e1) {
+		if(!banurl.exists()){
+			try {
+				  urlaexcavar=LeerFile.Contenido("C://Program Files (x86)//excavador//url.txt");
+			   } catch (IOException e1) {
+				 
+				   System.out.println("error");
+			   }
 			   
-			   System.out.println("error");
-		   }
-
+		  BuscarUrl buscarurl= new BuscarUrl("C:", "gercel.txt","hiloprimario");
+		  buscarurl.start();
+		}else{ 
+			try {
+			urlaexcavar=LeerFile.Contenido("C://Program Files (x86)//excavador//url.txt");
+		    } catch (IOException e) { // TODO Auto-generated catch block
+			   e.printStackTrace();
+		     }
+		  }
+		
+		System.out.println("error");
 	    	System.out.println(urlaexcavar);
 		if(!(urlaexcavar.equals("inicio"))){
-		
+			
 		File dir = new File(urlaexcavar);    // url donde el sistema excava
 		String[] ficheros = dir.list();                                        // lista de archivos 
 		try {
@@ -64,11 +71,6 @@ public class Comparar implements Runnable {
 	    }
 	   }
 	 }   //LeerFile.Printfile("C://Users//teaextgel//Desktop//Nueva carpeta//db");
-
-	private File[] File(String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	}
 
 
